@@ -32,9 +32,10 @@
 <html>
     <head>
         <title>Changer de département</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><a href="fiche.php?emp_no=<?= urlencode($emp_no) ?>">&larr; Retour à la fiche</a></p>
+    <p><div class="navbar"><a href="fiche.php?emp_no=<?= urlencode($emp_no) ?>">&larr; Retour à la fiche</a></div></p>
 
     <?php if (!$employee) { ?>
         <h1>Employé introuvable</h1>

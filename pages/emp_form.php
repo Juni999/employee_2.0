@@ -73,9 +73,10 @@
 <html>
     <head>
         <title><?= $editing ? "Modifier" : "Ajouter" ?> un employé</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><a href="index.php">&larr; Retour aux départements</a></p>
+    <p><div class="btn:hover"><a href="index.php">&larr; Retour aux départements</a></div></p>
     <h1><?= $editing ? "Modifier l'employé $emp_no" : "Ajouter un employé" ?></h1>
 
     <?php if ($success) { ?>

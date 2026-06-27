@@ -36,9 +36,10 @@
 <html>
     <head>
         <title><?= $editing ? "Modifier" : "Ajouter" ?> un département</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><a href="index.php">&larr; Retour aux départements</a></p>
+    <p><div class="navbar"><a href="index.php">&larr; Retour aux départements</a></div></p>
     <h1><?= $editing ? "Modifier le département $dept_no" : "Ajouter un département" ?></h1>
 
     <?php if ($success) { ?>
@@ -48,7 +49,7 @@
         <p style="color:red;"><?= htmlspecialchars($error) ?></p>
     <?php } ?>
 
-    <form method="post" action="dept_form.php<?= $editing ? '?dept_no=' . urlencode($dept_no) : '' ?>">
+    <form class="form-group" method="post" action="dept_form.php<?= $editing ? '?dept_no=' . urlencode($dept_no) : '' ?>">
         <input type="hidden" name="mode" value="<?= $editing ? 'edit' : 'add' ?>">
         <p>
             Numéro (4 car. max) :
@@ -57,7 +58,7 @@
                    <?= $editing ? 'readonly' : '' ?>>
         </p>
         <p>Nom : <input type="text" name="dept_name" value="<?= htmlspecialchars($dept_name) ?>"></p>
-        <p><input type="submit" value="<?= $editing ? 'Modifier' : 'Ajouter' ?>"></p>
+        <p><div class="btn"><input type="submit" value="<?= $editing ? 'Modifier' : 'Ajouter' ?>"></div></p>
     </form>
     </body>
 </html>

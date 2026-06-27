@@ -6,14 +6,22 @@
 <html>
     <head>
         <title>Les news</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
+  
     <body>
-    <h1>Liste des départements</h1>
-    <p><a href="search.php">🔍 Rechercher un employé</a></p>
-    <p><a href="stats.php">📊 Statistiques par emploi</a></p>
-    <p><a href="dept_form.php">➕ Ajouter un département</a></p>
-    <p><a href="emp_form.php">➕ Ajouter un employé</a></p>
- <table border="1">
+<div class="container">
+<div class="navbar">
+
+    <ul>
+        <li><a href="search.php">🔍 Rechercher un employé</a></li>
+        <li><a href="stats.php">📊 Statistiques par emploi</a></li>
+        <li><a href="dept_form.php">➕ Ajouter un département</a></li>
+        <li><a href="emp_form.php">➕ Ajouter un employé</a></li>
+    </ul>
+        <h1>Liste des départements</h1>
+</div>
+ <table border="1" class="table">
     <tr>
         <th>Department Number</th>
         <th>Department Name</th>
@@ -33,4 +41,5 @@
     </table>
 
     </body>
+    </div>
 </html>

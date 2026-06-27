@@ -15,24 +15,26 @@
 <html>
     <head>
         <title>Fiche employé</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><a href="javascript:history.back()">&larr; Retour</a></p>
+
+    <p><div class="btn"><a href="javascript:history.back()">&larr; Retour</a></div></p>
 
     <?php if (!$employee) { ?>
         <h1>Employé introuvable</h1>
     <?php } else { ?>
         <h1><?= $employee['first_name'] ?> <?= $employee['last_name'] ?></h1>
         <p><a href="change_dept.php?emp_no=<?= urlencode($employee['emp_no']) ?>">
-            <button type="button">Changer de département</button>
+            <button type="button" class="btn">Changer de département</button>
         </a></p>
         <p><a href="become_manager.php?emp_no=<?= urlencode($employee['emp_no']) ?>">
-            <button type="button">Devenir Manager</button>
+            <button type="button" class="btn">Devenir Manager</button>
         </a></p>
         <p><a href="emp_form.php?emp_no=<?= urlencode($employee['emp_no']) ?>">
-            <button type="button">Modifier l'employé</button>
+            <button type="button" class="btn">Modifier l'employé</button>
         </a></p>
-        <table border="1">
+        <table border="1" class="table">
             <tr><th>N°</th>              <td><?= $employee['emp_no'] ?></td></tr>
             <tr><th>Prénom</th>          <td><?= $employee['first_name'] ?></td></tr>
             <tr><th>Nom</th>             <td><?= $employee['last_name'] ?></td></tr>
@@ -55,7 +57,7 @@
         </table>
 
         <h2>Historique des emplois</h2>
-        <table border="1">
+        <table border="1" class="table">
             <tr>
                 <th>Poste</th>
                 <th>Du</th>
@@ -71,7 +73,7 @@
         </table>
 
         <h2>Historique des salaires</h2>
-        <table border="1">
+        <table border="1" class="table">
             <tr>
                 <th>Salaire</th>
                 <th>Du</th>

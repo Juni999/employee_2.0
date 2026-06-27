@@ -29,6 +29,7 @@
 <html>
     <head>
         <title>Devenir manager</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
     <p><a href="fiche.php?emp_no=<?= urlencode($emp_no) ?>">&larr; Retour à la fiche</a></p>

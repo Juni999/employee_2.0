@@ -16,9 +16,10 @@
 <html>
     <head>
         <title>Recherche d'employés</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><a href="index.php">&larr; Retour aux départements</a></p>
+    <p><div class="navbar"><a href="index.php">&larr; Retour aux départements</a></div></p>
     <h1>Recherche d'employés</h1>
 
     <form method="get" action="search.php">
@@ -41,7 +42,7 @@
 
     <?php if ($submitted) { ?>
         <h2><?= count($results) ?> résultat(s)<?= count($results) === 200 ? ' (limité à 200)' : '' ?></h2>
-        <table border="1">
+        <table border="1" class="table">
             <tr>
                 <th>N°</th>
                 <th>Prénom</th>

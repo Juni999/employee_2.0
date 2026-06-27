@@ -24,15 +24,16 @@
 <html>
     <head>
         <title>Employés du département</title>
+        <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><a href="index.php">&larr; Retour aux départements</a></p>
+    <p><div class="navbar"><a href="index.php">&larr; Retour aux départements</a></div></p>
 
     <?php if (!$department) { ?>
         <h1>Département introuvable</h1>
     <?php } else { ?>
         <h1>Employés du département <?= $department['dept_name'] ?> (<?= $department['dept_no'] ?>)</h1>
-        <table border="1">
+        <table border="1" class="table">
             <tr>
                 <th>N°</th>
                 <th>Prénom</th>
@@ -58,7 +59,7 @@
             Page <?= $page ?> / <?= $nb_pages ?>
 
             <?php if ($page < $nb_pages) { ?>
-                <a href="employees.php?dept_no=<?= urlencode($dept_no) ?>&page=<?= $page + 1 ?>">Suivant &rarr;</a>
+                <div class="btn"><a href="employees.php?dept_no=<?= urlencode($dept_no) ?>&page=<?= $page + 1 ?>">Suivant &rarr;</a></div>
             <?php } ?>
         </p>
         <p><?= $total ?> employé(s) au total dans ce département.</p>
