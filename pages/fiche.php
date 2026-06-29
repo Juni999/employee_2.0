@@ -11,6 +11,7 @@
     $salary_history = get_salary_history($emp_no);
     $title_history  = get_title_history($emp_no);
     $longest_title  = get_longest_title($emp_no);
+    $age_miasa = calcul_age_au_moment_de_l_embauche($employee['birth_date'], $employee['hire_date']);
 ?>
 <html>
     <head>
@@ -19,7 +20,7 @@
     </head>
     <body>
 
-    <p><div class="btn"><a href="javascript:history.back()">&larr; Retour</a></div></p>
+    <p><div class="navbar"><a href="javascript:history.back()">&larr; Retour</a></div></p>
 
     <?php if (!$employee) { ?>
         <h1>Employé introuvable</h1>
@@ -54,6 +55,7 @@
                     <?php } else { echo '—'; } ?>
                 </td>
             </tr>
+            <tr><th>Age au moment de l'embauche</th> <td><?= $age_miasa ?> Ans</td></tr>
         </table>
 
         <h2>Historique des emplois</h2>

@@ -40,6 +40,8 @@
                 <th>Nom</th>
                 <th>Genre</th>
                 <th>Date d'embauche</th>
+                <th>Telephone</th>
+                <th>Ajouter un numero</th>
             </tr>
             <?php foreach ($employees as $emp) { ?>
                 <tr>
@@ -48,6 +50,8 @@
                     <td><?= $emp['last_name'] ?></td>
                     <td><?= $emp['gender'] ?></td>
                     <td><?= $emp['hire_date'] ?></td>
+                    <td><?= $emp['telephone'] ?? '' ?></td>
+                    <td><a href="ajouter_num.php?emp_no=<?php echo $emp['emp_no']; ?>">Add numero(Seulement pour les individus qui se trouve dans la base)</a></td>
                 </tr>
             <?php } ?>
         </table>

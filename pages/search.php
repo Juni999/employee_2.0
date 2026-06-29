@@ -12,6 +12,17 @@
     // On ne lance la recherche que si le formulaire a été soumis
     $submitted = isset($_GET['dept_no']);
     $results   = $submitted ? search_employees($dept_no, $name, $age_min, $age_max) : array();
+    $nb_F = 0;
+    $nb_M = 0;
+
+    foreach ($results as $empl) {
+        if ($empl['gender'] == 'M') {
+            $nb_M ++;
+        }
+        else if ($empl['gender'] == 'F') {
+            $nb_F ++;
+        }
+    }
 ?>
 <html>
     <head>
@@ -41,7 +52,25 @@
     </form>
 
     <?php if ($submitted) { ?>
-        <h2><?= count($results) ?> résultat(s)<?= count($results) === 200 ? ' (limité à 200)' : '' ?></h2>
+     <h2><?= count($results) ?> résultat(s)<?php /*= count($results) === 200 ? ' (limité à 200)' : '' */ ?></h2>
+        <table border="1" class = "table">
+            <tr>
+                <th>
+                    Nombre des femmes
+                </th>
+                <th>
+                    Nombre des hommes
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <?= $nb_F ?>
+                </td>
+                <td>
+                    <?= $nb_M ?>
+                </td>
+            </tr>
+        </table>
         <table border="1" class="table">
             <tr>
                 <th>N°</th>

@@ -1,7 +1,8 @@
 <?php
     include('../inc/functions.php');
     $departments = get_all_departments();
-
+    $multiplicateur = $_GET['pourcentage'];
+    $after_up = augmenter_salaire_par_pourcentage($multiplicateur);
 ?>		
 <html>
     <head>
@@ -18,6 +19,7 @@
         <li><a href="stats.php">📊 Statistiques par emploi</a></li>
         <li><a href="dept_form.php">➕ Ajouter un département</a></li>
         <li><a href="emp_form.php">➕ Ajouter un employé</a></li>
+        <li><a href="augmentation.php">% Augmenter le salaire</a></li>
     </ul>
         <h1>Liste des départements</h1>
 </div>

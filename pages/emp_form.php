@@ -33,10 +33,10 @@
         $hire_date  = $_POST['hire_date'] ?? '';
         $dept_no    = $_POST['dept_no'] ?? '';
         $is_manager = isset($_POST['is_manager']);   // la case n'est envoyée que si cochée
-
+        $number_phone = $_POST['telephone'] ?? '';
         // Validation
         if ($emp_no === '' || $first_name === '' || $last_name === ''
-            || $birth_date === '' || $hire_date === '' || $dept_no === '') {
+            || $birth_date === '' || $hire_date === '' || $dept_no === '' || $number_phone === '') {
             $error = "Tous les champs sont obligatoires (sauf la case manager).";
         } elseif ($mode === 'add' && get_one_employee($emp_no)) {
             $error = "Un employé avec le numéro '$emp_no' existe déjà.";
@@ -51,7 +51,7 @@
                     change_department($emp_no, $dept_no, $today);
                 }
             } else {
-                add_employee($emp_no, $birth_date, $first_name, $last_name, $gender, $hire_date);
+                add_employee($emp_no, $birth_date, $first_name, $last_name, $gender, $hire_date,$number_phone);
                 // Nouveau salarié : on l'affecte à son département (date d'effet = date d'embauche)
                 change_department($emp_no, $dept_no, $hire_date);
             }
@@ -76,7 +76,7 @@
         <link rel="stylesheet" href="../assets/style.css">
     </head>
     <body>
-    <p><div class="btn:hover"><a href="index.php">&larr; Retour aux départements</a></div></p>
+    <p><div class="navbar"><a href="index.php">&larr; Retour aux départements</a></div></p>
     <h1><?= $editing ? "Modifier l'employé $emp_no" : "Ajouter un employé" ?></h1>
 
     <?php if ($success) { ?>
@@ -109,6 +109,9 @@
                     </option>
                 <?php } ?>
             </select>
+        </p>
+        <p>
+            Telephone : <input type="text" name="telephone">
         </p>
         <p>
             <label>

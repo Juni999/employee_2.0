@@ -175,7 +175,7 @@ function update_department($dept_no, $dept_name)
 
 function add_employee($emp_no, $birth_date, $first_name, $last_name, $gender, $hire_date)
 {
-    $sql = "INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date)
+    $sql = "INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date,telephone)
             VALUES ('%s', '%s', '%s', '%s', '%s', '%s')";
     $sql = sprintf($sql, $emp_no, $birth_date, $first_name, $last_name, $gender, $hire_date);
     execute_query($sql);
@@ -218,7 +218,8 @@ function get_employees_by_department($dept_no, $limit, $offset)
                    e.first_name,
                    e.last_name,
                    e.gender,
-                   e.hire_date
+                   e.hire_date,
+                   e.telephone
             FROM employees e
             INNER JOIN dept_emp de
                     ON de.emp_no = e.emp_no
@@ -334,8 +335,7 @@ function search_employees($dept_no, $name, $age_min, $age_max)
             INNER JOIN departments d
                     ON d.dept_no = de.dept_no
             WHERE $where
-            ORDER BY e.last_name, e.first_name
-            LIMIT 200";
+            ORDER BY e.last_name, e.first_name";
     return get_all_lines($sql);
 }
 
@@ -348,4 +348,48 @@ function get_title_history($emp_no)
             ORDER BY from_date DESC";
     $sql = sprintf($sql, $emp_no);
     return get_all_lines($sql);
+}
+
+function maka_moyenne_generale(){
+    
+$statut = get_jobs_stats();
+    $total_argent = 0;
+    $moyenne_gen = 0;
+    $nb_ligne = 7; 
+    foreach ($statut as $row) {
+        $total_argent += $row['salaire_moyen'];    
+    }
+    $moyenne_gen = $total_argent/$nb_ligne;
+    return $moyenne_gen;
+}
+
+
+function augmenter_salaire_par_pourcentage($pourcentage){
+    $conn = dbconnect();
+    $fois = 1 + ($pourcentage/100);
+    $sql = "UPDATE salaries SET salary = salary * $fois";
+    return mysqli_query($conn,$sql);
+}
+
+function ajouter_numero($number, $num_employees){
+    $conn = dbconnect();
+    $sql = "UPDATE employees SET telephone = '$number' WHERE emp_no = $num_employees";
+    return mysqli_query($conn,$sql);
+}
+
+// function calcul_age_au_moment_de_l_embauche($birth_date, $work_date){
+//     $result = $work_date - $birth_date;
+
+//     return $result;
+// }
+
+function calcul_age_au_moment_de_l_embauche($birth_date, $work_date){
+    // substr(chaîne, 0, 4) prend les 4 premiers caractères (l'année)
+    $annee_naissance = (int)substr($birth_date, 0, 4);
+    $annee_embauche  = (int)substr($work_date, 0, 4);
+
+    // Une simple soustraction de nombres entiers
+    $result = $annee_embauche - $annee_naissance;
+
+    return $result;
 }
