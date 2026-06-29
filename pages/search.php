@@ -52,7 +52,7 @@
     </form>
 
     <?php if ($submitted) { ?>
-     <h2><?= count($results) ?> résultat(s)<?php /*= count($results) === 200 ? ' (limité à 200)' : '' */ ?></h2>
+        <h2><?= count($results) ?> résultat(s)<?= count($results) === 200 ? ' (limité à 200)' : '' ?></h2>
         <table border="1" class = "table">
             <tr>
                 <th>
